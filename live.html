@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>GUMMELO SPECIAL LIVE</title>
+
+  <link
+    rel="stylesheet"
+    href="css/live.css"
+  >
+</head>
+
+
+<body>
+
+  <main class="site">
+
+
+    <!-- ========================================
+                  OPENING SCREEN
+    ========================================= -->
+
+    <section
+      class="screen opening-screen"
+      id="opening"
+    >
+
+      <div class="opening-glow"></div>
+
+      <p class="event-date">
+        9.3 GUMMY DAY
+      </p>
+
+      <h1 class="logo">
+        GUMMELO
+      </h1>
+
+      <p class="logo-ja">
+        グミメロ
+      </p>
+
+      <p class="special-live">
+        SPECIAL LIVE
+      </p>
+
+      <p class="opening-message">
+        推しグミと一緒に、<br>
+        グミメロの曲を楽しもう！
+      </p>
+
+      <button
+        class="live-start-button"
+        id="startButton"
+        type="button"
+      >
+        ▶ LIVE START
+      </button>
+
+      <p class="headphone-message">
+        🎧 イヤホン推奨
+      </p>
+
+    </section>
+
+
+
+    <!-- ========================================
+                    LIVE SCREEN
+    ========================================= -->
+
+    <section
+      class="screen live-screen"
+      id="liveScreen"
+    >
+
+
+      <div class="live-header">
+
+        <div>
+
+          <p class="live-small">
+            9.3 GUMMY DAY
+          </p>
+
+          <h2>
+            GUMMELO SPECIAL LIVE
+          </h2>
+
+        </div>
+
+
+        <div
+          class="live-status"
+          id="liveStatus"
+        >
+          ● LIVE
+        </div>
+
+      </div>
+
+
+
+      <!-- ========================================
+                    STAGE IMAGE
+      ========================================= -->
+
+      <div class="stage-frame">
+
+        <img
+          src="images/gummelo-stage.jpg"
+          alt="GUMMELO SPECIAL LIVE ステージ"
+          class="stage-image"
+        >
+
+        <div class="stage-overlay">
+
+          <div class="now-playing">
+
+            <span class="now-playing-label">
+              NOW PLAYING
+            </span>
+
+            <strong>
+              推しグミ！
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ========================================
+                    MUSIC INFO
+      ========================================= -->
+
+      <div class="music-info">
+
+        <div class="track-title">
+          推しグミ！
+        </div>
+
+        <div class="artist-name">
+          GUMMELO
+        </div>
+
+      </div>
+
+
+
+      <!-- ========================================
+                    PROGRESS
+      ========================================= -->
+
+      <div class="progress-area">
+
+        <div class="time-row">
+
+          <span id="currentTime">
+            0:00
+          </span>
+
+          <span id="duration">
+            0:00
+          </span>
+
+        </div>
+
+
+        <div
+          class="progress-bar"
+          id="progressBar"
+        >
+
+          <div
+            class="progress-fill"
+            id="progressFill"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ========================================
+                    CONTROLS
+      ========================================= -->
+
+      <div class="controls">
+
+        <button
+          id="backButton"
+          class="sub-control"
+          type="button"
+          aria-label="10秒戻る"
+        >
+          ↶10
+        </button>
+
+
+        <button
+          id="pauseButton"
+          class="main-control"
+          type="button"
+          aria-label="一時停止"
+        >
+          ❚❚
+        </button>
+
+
+        <button
+          id="forwardButton"
+          class="sub-control"
+          type="button"
+          aria-label="10秒進む"
+        >
+          10↷
+        </button>
+
+      </div>
+
+
+
+      <p class="headphone-message live-headphone">
+        🎧 イヤホン推奨
+      </p>
+
+
+
+      <!-- ========================================
+                       AUDIO
+      ========================================= -->
+
+      <audio
+        id="liveMusic"
+        preload="metadata"
+      >
+
+        <source
+          src="music/oshigumi.mp3"
+          type="audio/mpeg"
+        >
+
+      </audio>
+
+
+    </section>
+
+
+
+    <!-- ========================================
+                   ENDING SCREEN
+    ========================================= -->
+
+    <section
+      class="screen ending-screen"
+      id="ending"
+    >
+
+      <p class="ending-small">
+        THANK YOU FOR LISTENING
+      </p>
+
+      <h2>
+        GUMMELO
+      </h2>
+
+      <p class="ending-ja">
+        グミメロ
+      </p>
+
+      <p class="ending-message">
+        あなたの推しグミも<br>
+        見つけてみてね！
+      </p>
+
+      <button
+        class="replay-button"
+        id="replayButton"
+        type="button"
+      >
+        ↻ もう一度聴く
+      </button>
+
+    </section>
+
+
+  </main>
+
+
+  <script src="live.js"></script>
+
+</body>
+
+</html>
