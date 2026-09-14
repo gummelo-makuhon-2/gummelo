@@ -1,305 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>NEON CIRCUIT HALLOWEEN SPECIAL</title>
   <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    name="description"
+    content="NEON CIRCUIT Halloween Special Site"
+  />
 
-  <title>GUMMELO SPECIAL LIVE</title>
-
-  <link
-    rel="stylesheet"
-    href="css/live.css"
-  >
+  <link rel="stylesheet" href="css/live.css" />
 </head>
-
 
 <body>
 
-  <main class="site">
+  <!-- Opening -->
+  <section class="opening-screen" id="openingScreen">
+    <div class="opening-overlay"></div>
 
+    <div class="opening-content">
+      <p class="small-title">MAKUHON-2 LIMITED CONTENT</p>
 
-    <!-- ========================================
-                  OPENING SCREEN
-    ========================================= -->
-
-    <section
-      class="screen opening-screen"
-      id="opening"
-    >
-
-      <div class="opening-glow"></div>
-
-      <p class="event-date">
-        9.3 GUMMY DAY
-      </p>
-
-      <h1 class="logo">
-        GUMMELO
+      <h1>
+        NEON CIRCUIT
+        <span>HALLOWEEN SPECIAL</span>
       </h1>
 
-      <p class="logo-ja">
-        グミメロ
+      <p class="opening-copy">
+        Welcome to the Halloween Night.
       </p>
 
-      <p class="special-live">
-        SPECIAL LIVE
-      </p>
-
-      <p class="opening-message">
-        推しグミと一緒に、<br>
-        グミメロの曲を楽しもう！
-      </p>
-
-      <button
-        class="live-start-button"
-        id="startButton"
-        type="button"
-      >
-        ▶ LIVE START
+      <button id="startButton" class="main-button">
+        ENTER
       </button>
+    </div>
+  </section>
 
-      <p class="headphone-message">
-        🎧 イヤホン推奨
+
+  <!-- Main -->
+  <main class="live-screen hidden" id="liveScreen">
+
+    <header class="live-header">
+      <p class="small-title">SPECIAL MUSIC CONTENT</p>
+
+      <h2>NEON CIRCUIT</h2>
+
+      <p class="event-title">
+        HALLOWEEN PARADE
       </p>
+    </header>
 
+
+    <!-- Main Visual -->
+    <section class="visual-section">
+      <div class="visual-frame">
+        <img
+          src="images/halloween.png"
+          alt="NEON CIRCUIT Halloween Special Visual"
+        />
+      </div>
     </section>
 
 
+    <!-- Song -->
+    <section class="music-section">
 
-    <!-- ========================================
-                    LIVE SCREEN
-    ========================================= -->
+      <div class="song-info">
+        <p class="now-playing">NOW PLAYING</p>
 
-    <section
-      class="screen live-screen"
-      id="liveScreen"
-    >
+        <h3>Halloween Parade</h3>
 
-
-      <div class="live-header">
-
-        <div>
-
-          <p class="live-small">
-            9.3 GUMMY DAY
-          </p>
-
-          <h2>
-            GUMMELO SPECIAL LIVE
-          </h2>
-
-        </div>
-
-
-        <div
-          class="live-status"
-          id="liveStatus"
-        >
-          ● LIVE
-        </div>
-
+        <p class="artist-name">
+          NEON CIRCUIT
+        </p>
       </div>
 
 
-
-      <!-- ========================================
-                    STAGE IMAGE
-      ========================================= -->
-
-      <div class="stage-frame">
-
-        <img
-          src="images/gummelo-stage.jpg"
-          alt="GUMMELO SPECIAL LIVE ステージ"
-          class="stage-image"
-        >
-
-        <div class="stage-overlay">
-
-          <div class="now-playing">
-
-            <span class="now-playing-label">
-              NOW PLAYING
-            </span>
-
-            <strong>
-              推しグミ！
-            </strong>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- ========================================
-                    MUSIC INFO
-      ========================================= -->
-
-      <div class="music-info">
-
-        <div class="track-title">
-          推しグミ！
-        </div>
-
-        <div class="artist-name">
-          GUMMELO
-        </div>
-
-      </div>
-
-
-
-      <!-- ========================================
-                    PROGRESS
-      ========================================= -->
-
-      <div class="progress-area">
-
-        <div class="time-row">
-
-          <span id="currentTime">
-            0:00
-          </span>
-
-          <span id="duration">
-            0:00
-          </span>
-
-        </div>
-
-
-        <div
-          class="progress-bar"
-          id="progressBar"
-        >
-
-          <div
-            class="progress-fill"
-            id="progressFill"
-          ></div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- ========================================
-                    CONTROLS
-      ========================================= -->
-
-      <div class="controls">
-
-        <button
-          id="backButton"
-          class="sub-control"
-          type="button"
-          aria-label="10秒戻る"
-        >
-          ↶10
-        </button>
-
-
-        <button
-          id="pauseButton"
-          class="main-control"
-          type="button"
-          aria-label="一時停止"
-        >
-          ❚❚
-        </button>
-
-
-        <button
-          id="forwardButton"
-          class="sub-control"
-          type="button"
-          aria-label="10秒進む"
-        >
-          10↷
-        </button>
-
-      </div>
-
-
-
-      <p class="headphone-message live-headphone">
-        🎧 イヤホン推奨
-      </p>
-
-
-
-      <!-- ========================================
-                       AUDIO
-      ========================================= -->
-
-      <audio
-        id="liveMusic"
-        preload="metadata"
-      >
-
+      <audio id="liveMusic" preload="metadata">
         <source
-          src="music/oshigumi.mp3"
+          src="music/halloween.mp3"
           type="audio/mpeg"
-        >
-
+        />
       </audio>
 
 
+      <!-- Progress -->
+      <div class="progress-area">
+
+        <input
+          type="range"
+          id="progressBar"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+        />
+
+        <div class="time-display">
+          <span id="currentTime">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+
+      </div>
+
+
+      <!-- Controls -->
+      <div class="control-buttons">
+
+        <button
+          id="backButton"
+          class="control-button"
+          aria-label="10秒戻る"
+        >
+          ↺ 10
+        </button>
+
+        <button
+          id="playButton"
+          class="play-button"
+          aria-label="再生"
+        >
+          ▶
+        </button>
+
+        <button
+          id="forwardButton"
+          class="control-button"
+          aria-label="10秒進む"
+        >
+          10 ↻
+        </button>
+
+      </div>
+
     </section>
 
 
+    <!-- Halloween Message -->
+    <section class="message-section">
+      <p class="message-en">
+        Welcome to the Halloween Night.
+      </p>
 
-    <!-- ========================================
-                   ENDING SCREEN
-    ========================================= -->
+      <p class="message-main">
+        今夜だけの特別なパレードへ。
+      </p>
 
-    <section
-      class="screen ending-screen"
-      id="ending"
-    >
+      <p class="message-sub">
+        NEON CIRCUITと一緒に<br />
+        Halloween Nightを楽しもう！
+      </p>
+    </section>
+
+
+    <!-- Notice -->
+    <section class="notice-section">
+      <p>
+        ※音声が流れます。周囲のお客様へのご配慮をお願いいたします。
+      </p>
+
+      <p>
+        ※イヤホン・ヘッドホンでの視聴をおすすめします。
+      </p>
+
+      <p>
+        ※サイトの閲覧・音楽再生にかかる通信料は
+        お客様のご負担となります。
+      </p>
+
+      <p class="prototype-note">
+        ※本ページは企画確認用の仮サイトです。
+      </p>
+    </section>
+
+
+    <footer>
+      <p>NEON CIRCUIT HALLOWEEN SPECIAL</p>
+    </footer>
+
+  </main>
+
+
+  <!-- Ending -->
+  <section class="ending-screen hidden" id="endingScreen">
+
+    <div class="ending-content">
 
       <p class="ending-small">
         THANK YOU FOR LISTENING
       </p>
 
       <h2>
-        GUMMELO
+        HAPPY
+        <span>HALLOWEEN!</span>
       </h2>
 
-      <p class="ending-ja">
-        グミメロ
+      <p>
+        またHalloween Nightで会おう。
       </p>
 
-      <p class="ending-message">
-        あなたの推しグミも<br>
-        見つけてみてね！
-      </p>
-
-      <button
-        class="replay-button"
-        id="replayButton"
-        type="button"
-      >
-        ↻ もう一度聴く
+      <button id="replayButton" class="main-button">
+        REPLAY
       </button>
 
-    </section>
+    </div>
 
-
-  </main>
+  </section>
 
 
   <script src="live.js"></script>
 
 </body>
-
 </html>
