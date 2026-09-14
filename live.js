@@ -1,20 +1,8 @@
-const opening =
-  document.getElementById("opening");
+const liveMusic =
+  document.getElementById("liveMusic");
 
-const liveScreen =
-  document.getElementById("liveScreen");
-
-const ending =
-  document.getElementById("ending");
-
-const startButton =
-  document.getElementById("startButton");
-
-const pauseButton =
-  document.getElementById("pauseButton");
-
-const replayButton =
-  document.getElementById("replayButton");
+const playButton =
+  document.getElementById("playButton");
 
 const backButton =
   document.getElementById("backButton");
@@ -22,27 +10,24 @@ const backButton =
 const forwardButton =
   document.getElementById("forwardButton");
 
-const liveMusic =
-  document.getElementById("liveMusic");
-
-const progressBar =
-  document.getElementById("progressBar");
+const progressTrack =
+  document.getElementById("progressTrack");
 
 const progressFill =
   document.getElementById("progressFill");
 
-const currentTime =
+const currentTimeDisplay =
   document.getElementById("currentTime");
 
-const duration =
+const durationDisplay =
   document.getElementById("duration");
 
 
-let isPaused = false;
+let isPlaying = false;
 
 
 /* =========================================
-             TIME FORMAT
+              FORMAT TIME
 ========================================= */
 
 function formatTime(seconds) {
@@ -51,121 +36,84 @@ function formatTime(seconds) {
     return "0:00";
   }
 
+
   const minutes =
     Math.floor(seconds / 60);
 
-  const secs =
+
+  const remainingSeconds =
     Math.floor(seconds % 60);
+
 
   return (
     minutes +
     ":" +
-    String(secs).padStart(2, "0")
+    String(
+      remainingSeconds
+    ).padStart(2, "0")
   );
+
 }
 
 
 /* =========================================
-              LIVE START
+              PLAY / PAUSE
 ========================================= */
 
-startButton.addEventListener(
-  "click",
-  async () => {
+async function togglePlayback() {
 
-    opening.style.display =
-      "none";
-
-    ending.style.display =
-      "none";
-
-    liveScreen.style.display =
-      "flex";
-
-    liveMusic.currentTime = 0;
+  if (liveMusic.paused) {
 
     try {
 
       await liveMusic.play();
 
-      pauseButton.textContent =
+      playButton.textContent =
         "❚❚";
 
-      pauseButton.setAttribute(
+      playButton.setAttribute(
         "aria-label",
         "一時停止"
       );
 
-      isPaused = false;
+      isPlaying = true;
 
     } catch (error) {
 
       console.error(
-        "再生エラー:",
+        "音楽を再生できませんでした。",
         error
       );
 
     }
 
+  } else {
+
+    liveMusic.pause();
+
+    playButton.textContent =
+      "▶";
+
+    playButton.setAttribute(
+      "aria-label",
+      "再生"
+    );
+
+    isPlaying = false;
+
   }
-);
+
+}
 
 
-/* =========================================
-               PAUSE / PLAY
-========================================= */
-
-pauseButton.addEventListener(
+playButton.addEventListener(
   "click",
-  async () => {
-
-    if (!isPaused) {
-
-      liveMusic.pause();
-
-      pauseButton.textContent =
-        "▶";
-
-      pauseButton.setAttribute(
-        "aria-label",
-        "再生"
-      );
-
-      isPaused = true;
-
-    } else {
-
-      try {
-
-        await liveMusic.play();
-
-        pauseButton.textContent =
-          "❚❚";
-
-        pauseButton.setAttribute(
-          "aria-label",
-          "一時停止"
-        );
-
-        isPaused = false;
-
-      } catch (error) {
-
-        console.error(
-          "再生エラー:",
-          error
-        );
-
-      }
-
-    }
-
-  }
+  togglePlayback
 );
 
 
 /* =========================================
-             10 SEC BACK
+             SKIP BUTTONS
 ========================================= */
 
 backButton.addEventListener(
@@ -182,41 +130,29 @@ backButton.addEventListener(
 );
 
 
-/* =========================================
-             10 SEC FORWARD
-========================================= */
-
 forwardButton.addEventListener(
   "click",
   () => {
 
-    if (
-      Number.isFinite(
-        liveMusic.duration
-      )
-    ) {
-
-      liveMusic.currentTime =
-        Math.min(
-          liveMusic.duration,
-          liveMusic.currentTime + 10
-        );
-
-    }
+    liveMusic.currentTime =
+      Math.min(
+        liveMusic.duration || 0,
+        liveMusic.currentTime + 10
+      );
 
   }
 );
 
 
 /* =========================================
-             MUSIC META
+             METADATA
 ========================================= */
 
 liveMusic.addEventListener(
   "loadedmetadata",
   () => {
 
-    duration.textContent =
+    durationDisplay.textContent =
       formatTime(
         liveMusic.duration
       );
@@ -226,17 +162,18 @@ liveMusic.addEventListener(
 
 
 /* =========================================
-               PROGRESS
+             PROGRESS UPDATE
 ========================================= */
 
 liveMusic.addEventListener(
   "timeupdate",
   () => {
 
-    currentTime.textContent =
+    currentTimeDisplay.textContent =
       formatTime(
         liveMusic.currentTime
       );
+
 
     if (
       Number.isFinite(
@@ -251,6 +188,7 @@ liveMusic.addEventListener(
           liveMusic.duration
         ) * 100;
 
+
       progressFill.style.width =
         percentage + "%";
 
@@ -264,7 +202,7 @@ liveMusic.addEventListener(
               SEEK BAR
 ========================================= */
 
-progressBar.addEventListener(
+progressTrack.addEventListener(
   "click",
   (event) => {
 
@@ -276,15 +214,19 @@ progressBar.addEventListener(
       return;
     }
 
+
     const rect =
-      progressBar
+      progressTrack
         .getBoundingClientRect();
+
 
     const clickX =
       event.clientX - rect.left;
 
+
     const ratio =
       clickX / rect.width;
+
 
     liveMusic.currentTime =
       ratio *
@@ -295,55 +237,31 @@ progressBar.addEventListener(
 
 
 /* =========================================
-               END LIVE
+             SONG ENDED
 ========================================= */
 
 liveMusic.addEventListener(
   "ended",
   () => {
 
-    liveScreen.style.display =
-      "none";
+    playButton.textContent =
+      "▶";
 
-    ending.style.display =
-      "flex";
+    playButton.setAttribute(
+      "aria-label",
+      "再生"
+    );
+
+    isPlaying = false;
+
 
     progressFill.style.width =
       "0%";
 
-    currentTime.textContent =
+
+    currentTimeDisplay.textContent =
       "0:00";
 
-    liveMusic.currentTime = 0;
-
-    pauseButton.textContent =
-      "❚❚";
-
-    isPaused = false;
-
-  }
-);
-
-
-/* =========================================
-               REPLAY
-========================================= */
-
-replayButton.addEventListener(
-  "click",
-  () => {
-
-    ending.style.display =
-      "none";
-
-    opening.style.display =
-      "flex";
-
-    progressFill.style.width =
-      "0%";
-
-    currentTime.textContent =
-      "0:00";
 
     liveMusic.currentTime = 0;
 
