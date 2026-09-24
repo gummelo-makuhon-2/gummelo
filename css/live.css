@@ -729,6 +729,29 @@ footer p {
   color: var(--text-sub);
 }
 
+.gummelo-opening {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* ========================================
+   Progress Bar Width
+======================================== */
+
+.progress-area {
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#progressBar,
+#gummeloProgressBar {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
 
 /* -------------------------
    Small screens
