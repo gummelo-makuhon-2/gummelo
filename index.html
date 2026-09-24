@@ -18,24 +18,46 @@
   <!-- Opening -->
   <section class="opening-screen" id="openingScreen">
     <div class="opening-overlay"></div>
+　　　
+<div class="opening-content">
+  <p class="small-title">MAKUHON-2 LIMITED CONTENT</p>
 
-    <div class="opening-content">
-      <p class="small-title">MAKUHON-2 LIMITED CONTENT</p>
+  <!-- NEON CIRCUIT -->
+  <div class="opening-artist">
+    <h1>
+      NEON CIRCUIT
+      <span>HALLOWEEN SPECIAL</span>
+    </h1>
 
-      <h1>
-        NEON CIRCUIT
-        <span>HALLOWEEN SPECIAL</span>
-      </h1>
+    <p class="opening-copy">
+      Halloween Parade
+    </p>
 
-      <p class="opening-copy">
-        Welcome to the Halloween Night.
-      </p>
+    <button id="startButton" class="main-button">
+      ENTER
+    </button>
+  </div>
 
-      <button id="startButton" class="main-button">
-        ENTER
-      </button>
-    </div>
-  </section>
+
+  <!-- GUMIMERO -->
+  <div class="opening-artist gummelo-opening">
+    <h1>
+      GUMIMERO
+      <span>HALLOWEEN SPECIAL</span>
+    </h1>
+
+    <p class="opening-copy">
+      秘密のNightMeet
+    </p>
+
+    <button id="gummeloButton" class="main-button">
+      ENTER
+    </button>
+  </div>
+</div>
+
+
+     </section>
 
 
   <!-- Main -->
@@ -180,6 +202,153 @@
     </footer>
 
   </main>
+
+<!-- GUMIMERO Main -->
+<main class="live-screen hidden" id="gummeloScreen">
+
+  <header class="live-header">
+    <p class="small-title">SPECIAL MUSIC CONTENT</p>
+
+    <h2>GUMIMERO</h2>
+
+    <p class="event-title">
+      HALLOWEEN SPECIAL
+    </p>
+  </header>
+
+
+  <!-- Main Visual -->
+  <section class="visual-section">
+    <div class="visual-frame">
+      <img
+        src="images/nightmeet.png"
+        alt="GUMIMERO 秘密のNightMeet"
+      />
+    </div>
+  </section>
+
+
+  <!-- Song -->
+  <section class="music-section">
+
+    <div class="song-info">
+      <p class="now-playing">NOW PLAYING</p>
+
+      <h3>秘密のNightMeet</h3>
+
+      <p class="artist-name">
+        GUMIMERO
+      </p>
+    </div>
+
+
+    <audio id="gummeloMusic" preload="metadata">
+      <source
+        src="music/nightmeet.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+
+    <!-- Progress -->
+    <div class="progress-area">
+
+      <input
+        type="range"
+        id="gummeloProgressBar"
+        min="0"
+        max="100"
+        value="0"
+        step="0.1"
+      />
+
+      <div class="time-display">
+        <span id="gummeloCurrentTime">0:00</span>
+        <span id="gummeloDuration">0:00</span>
+      </div>
+
+    </div>
+
+
+    <!-- Controls -->
+    <div class="control-buttons">
+
+      <button
+        id="gummeloBackButton"
+        class="control-button"
+        aria-label="10秒戻る"
+      >
+        ↺ 10
+      </button>
+
+      <button
+        id="gummeloPlayButton"
+        class="play-button"
+        aria-label="再生"
+      >
+        ▶
+      </button>
+
+      <button
+        id="gummeloForwardButton"
+        class="control-button"
+        aria-label="10秒進む"
+      >
+        10 ↻
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- Halloween Message -->
+  <section class="message-section">
+
+    <p class="message-en">
+      Welcome to our secret NightMeet.
+    </p>
+
+    <p class="message-main">
+      今夜だけの、秘密のHalloween Partyへ。
+    </p>
+
+    <p class="message-sub">
+      GUMIMEROと一緒に<br />
+      特別な夜を楽しもう！
+    </p>
+
+  </section>
+
+
+  <!-- Notice -->
+  <section class="notice-section">
+
+    <p>
+      ※音声が流れます。周囲のお客様へのご配慮をお願いいたします。
+    </p>
+
+    <p>
+      ※イヤホン・ヘッドホンでの視聴をおすすめします。
+    </p>
+
+    <p>
+      ※サイトの閲覧・音楽再生にかかる通信料は
+      お客様のご負担となります。
+    </p>
+
+    <p class="prototype-note">
+      ※本ページは企画確認用の仮サイトです。
+    </p>
+
+  </section>
+
+
+  <footer>
+    <p>GUMIMERO HALLOWEEN SPECIAL</p>
+  </footer>
+
+</main>
 
 
   <!-- Ending -->
